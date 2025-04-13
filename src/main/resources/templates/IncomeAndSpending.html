@@ -1,5 +1,5 @@
+
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8;"/>
     <title>Income and Spending</title>
@@ -10,7 +10,7 @@
 </head>
 <body class="govuk-template__body">
 
-<div th:replace="fragments/govHeader :: header"></div>
+<div th:replace="~{fragments/govHeader :: header}"></div>
 
 <div class="govuk-width-container">
     <main class="govuk-main-wrapper" id="main-content" role="main">
@@ -22,30 +22,19 @@
 
             <div class="govuk-form-group">
                 <label class="govuk-label govuk-label--l" for="income">Income</label>
-                <div class="govuk-input__wrapper">
+                <div th:errors="*{income}" class="govuk-error-message"></div>
+            <div class="govuk-input__wrapper">
                     <div class="govuk-input__prefix" aria-hidden="true">£</div>
-                    <input class="govuk-input govuk-input--width-10" type="text" id="income"
-                           name="income" th:field="*{income}" required>
+                    <input class="govuk-input govuk-input--width-10" type="text" id="income" name="income" th:field="*{income}" required>
                 </div>
             </div>
-
 
             <div class="govuk-form-group">
                 <label class="govuk-label govuk-label--l" for="spending">Spending</label>
+                <div th:errors="*{spending}" class="govuk-error-message"></div>
                 <div class="govuk-input__wrapper">
                     <div class="govuk-input__prefix" aria-hidden="true">£</div>
-                    <input class="govuk-input govuk-input--width-10" type="text" id="spending"
-                           name="spending" th:field="*{spending}" required>
-                </div>
-            </div>
-
-            <!-- Validation Messages -->
-            <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" th:if="${#fields.hasErrors()}">
-                <h2 class="govuk-error-summary__title" id="error-summary-title">There is a problem</h2>
-                <div class="govuk-error-summary__body">
-                    <ul class="govuk-list govuk-error-summary__list">
-                        <li th:each="error : ${#fields.allErrors()}" th:text="${error}"></li>
-                    </ul>
+                    <input class="govuk-input govuk-input--width-10" type="text" id="spending" name="spending" th:field="*{spending}" required>
                 </div>
             </div>
 

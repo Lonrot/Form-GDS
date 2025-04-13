@@ -1,33 +1,24 @@
 package web.form.gds.webapp.model;
 
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
+import lombok.Getter;
+import lombok.Setter;
 
 
+@Setter
+@Getter
 public abstract class BaseIncomeAndSpending {
     @Min(value = 1)
+    @Max(value = 5000, message = "Income cannot be more than 5000")
     @NotNull
     private int income;
 
     @Min(value = 1)
+    @Max(value = 5000, message = "Spending cannot be more than 5000")
     @NotNull
+    @Valid
     private int spending;
-
-    public int getIncome() {
-        return income;
-    }
-
-    public void setIncome(int income) {
-        this.income = income;
-    }
-
-    public int getSpending() {
-        return spending;
-    }
-
-    public void setSpending(int spending) {
-        this.spending = spending;
-    }
 
     @Override
     public String toString() {
