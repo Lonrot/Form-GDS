@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8;"/>
+    <link rel="stylesheet" href="/css/govuk-frontend-5.7.1.min.css">
+    <script type="module" th:src="@{/js/govuk-frontend-5.7.1.min.js}"></script>
+    <meta property="og:title" content="Confirm period">
+
+    <title>Confirm period - AR</title>
+</head>
+
+<body class="govuk-template__body">
+
+<div th:replace="~{fragments/govHeader :: header}"></div>
+
+<div class="govuk-width-container">
+    <main class="govuk-main-wrapper" id="main-content" role="main">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h1 class="govuk-heading-xl">Confirm period</h1>
+
+                <p class="govuk-heading-m">Is this period correct?</p>
+
+                <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Start date
+                        </dt>
+                        <dd class="govuk-summary-list__value" th:text="${#temporals.format(PeriodConfirmation.getStartDate(), 'dd/MM/yyyy')}">
+
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            End date
+                        </dt>
+                        <dd class="govuk-summary-list__value" th:text="${#temporals.format(PeriodConfirmation.getEndDate(), 'dd/MM/yyyy')}">
+
+                        </dd>
+                    </div>
+                </dl>
+
+                <form action="/periodConfirmation/next" method="post">
+                    <div class="govuk-button-group">
+                        <a href="/period-confirmation/edit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                            Edit period
+                        </a>
+                        <button type="submit" class="govuk-button" data-module="govuk-button"> Confirm and continue </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+
+<div th:replace="~{fragments/govFooter :: footer}"></div>
+</body>
