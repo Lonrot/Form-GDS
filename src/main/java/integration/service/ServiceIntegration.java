@@ -17,7 +17,7 @@ public class ServiceIntegration {
     public AnnualReturnList getAvailableARs(String userID){
         if(userID == null || userID.isEmpty()) {
             throw new IllegalArgumentException("User ID cannot be null or empty");
-        } else if(!StringUtils.isAlpha(userID)) {
+        } else if(!StringUtils.isNumeric(userID)) {
             throw new IllegalArgumentException("User ID must contains only numbers, ID used: " + userID + " ");
         }
 
