@@ -2,7 +2,6 @@ package web.form.model;
 
 import java.util.List;
 
-public class AnnualReturnList {
+public record AnnualReturnList(List<AnnualReturn> annualReturns) {
 
-    List<AnnualReturn> annualReturns;
 }
