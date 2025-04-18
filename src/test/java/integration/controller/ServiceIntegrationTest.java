@@ -3,6 +3,7 @@ package integration.controller;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import integration.service.ServiceIntegration;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,11 @@ class ServiceIntegrationTest {
         server.start();
     }
 
+    @AfterEach
+    void tearDown() {
+        server.stop();
+    }
+
     @Autowired
     private ServiceIntegration serviceIntegration;
 
@@ -39,7 +45,6 @@ class ServiceIntegrationTest {
         String userID = "256653";
         AnnualReturnList annualReturnList = serviceIntegration.getAvailableARs(userID);
         assertNotNull(annualReturnList, "Error getting ARs");
-        server.stop();
     }
 
     @Test
