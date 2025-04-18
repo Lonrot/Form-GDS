@@ -15,7 +15,11 @@ This project is a multi-page annual return form system built using **Spring Boot
 - [ ] Progress tracking (progress menu or breadcrumbs)
 - [ ] Resume saved forms from session (?)
 
----
+
+
+## 🌟 Extended Features (Future Enhancements)
+These features are planned for development after the MVD milestone is complete.
+
 
 ### 🗓 Version Handling
 
