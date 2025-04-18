@@ -6,7 +6,6 @@ import integration.service.ServiceIntegration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import org.springframework.context.annotation.Import;
@@ -23,8 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @EnableWireMock
 class ServiceIntegrationTest {
 
-    @Value("${wiremock.server.baseUrl}")
-    private String wireMockUrl;
+
 
     @BeforeEach
     void setUp() {
