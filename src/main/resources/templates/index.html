@@ -1,10 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="govuk-template">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Annual Return Service</title>
+    <link th:href="@{/css/govuk-frontend-5.7.1.min.css}" rel="stylesheet">
+    <script type="module" th:src="@{/js/govuk-frontend-5.7.1.min.js}"></script>
+    <style>
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            text-align: center;
+        }
+        .govuk-link--no-underline {
+            text-decoration: none;
+        }
+    </style>
 </head>
-<body>
-    Hello, ${name}!
+<th:block th:replace="fragments/govHeader :: header"></th:block>
+<body class="govuk-template__body">
+<div class="govuk-width-container">
+    <main class="govuk-main-wrapper" id="main-content" role="main">
+        <div class="center-content">
+            <h1 class="govuk-heading-xl">Annual Return Service</h1>
+            <a href="#" class="govuk-link govuk-link--no-underline govuk-!-font-size-24">
+                Start Annual Return
+            </a>
+        </div>
+    </main>
+</div>
 </body>
+<th:block th:replace="fragments/govFooter :: footer"></th:block>
 </html>
