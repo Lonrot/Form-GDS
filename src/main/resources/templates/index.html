@@ -19,18 +19,19 @@
         }
     </style>
 </head>
-<th:block th:replace="fragments/govHeader :: header"></th:block>
+<th:block th:replace="~{fragments/govHeader :: header}"></th:block>
 <body class="govuk-template__body">
 <div class="govuk-width-container">
     <main class="govuk-main-wrapper" id="main-content" role="main">
         <div class="center-content">
             <h1 class="govuk-heading-xl">Annual Return Service</h1>
-            <a href="#" class="govuk-link govuk-link--no-underline govuk-!-font-size-24">
+            <a href="select-ar"
+               class="govuk-link govuk-link--no-underline govuk-!-font-size-24">
                 Start Annual Return
             </a>
         </div>
     </main>
 </div>
 </body>
-<th:block th:replace="fragments/govFooter :: footer"></th:block>
-</html>
+<th:block th:replace="~{fragments/govFooter :: footer}"></th:block>
+

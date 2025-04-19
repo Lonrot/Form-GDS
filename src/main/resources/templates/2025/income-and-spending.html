@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8;"/>
+    <title>Income and Spending</title>
+    <link rel="stylesheet" href="/css/govuk-frontend-5.7.1.min.css">
+    <script type="module" th:src="@{/js/govuk-frontend-5.7.1.min.js}"></script>
+
+
+</head>
+<body class="govuk-template__body">
+
+<div th:replace="~{fragments/govHeader :: header}"></div>
+
+<div class="govuk-width-container">
+    <main class="govuk-main-wrapper" id="main-content" role="main">
+        <h1 class="govuk-heading-l">Income and Spending</h1>
+
+        <form action="#" th:action="@{/submit}" th:object="${IncomeAndSpending2025}"
+              method="post">
+            <div th:insert="fragments/components/monetaryInput:: monetaryInput(income)"></div>
+            <div th:insert="fragments/components/monetaryInput:: monetaryInput(spending)"></div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="govuk-button" data-module="govuk-button">Continue</button>
+        </form>
+    </main>
+</div>
+
+<!-- Footer -->
+<div th:replace="~{fragments/govFooter :: footer}"></div>
+</body>
