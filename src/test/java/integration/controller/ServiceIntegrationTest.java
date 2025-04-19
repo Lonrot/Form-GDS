@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.wiremock.spring.EnableWireMock;
 import web.form.FormGdsApplication;
-import web.form.model.AnnualReturnList;
+import web.form.model.AnnualReturnArray;
 
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @EnableWireMock
 class ServiceIntegrationTest {
 
-    WireMockServer server;
+    private WireMockServer server;
 
 
     @BeforeEach
@@ -43,8 +43,8 @@ class ServiceIntegrationTest {
     @Test
     void getAvailableARs() {
         String userID = "256653";
-        AnnualReturnList annualReturnList = serviceIntegration.getAvailableARs(userID);
-        assertNotNull(annualReturnList, "Error getting ARs");
+        AnnualReturnArray annualReturnArray = serviceIntegration.getAvailableARs(userID);
+        assertNotNull(annualReturnArray, "Error getting ARs");
     }
 
     @Test
