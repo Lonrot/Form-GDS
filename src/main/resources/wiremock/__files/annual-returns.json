@@ -3,22 +3,32 @@
     {
       "ARCycle": "2026",
       "ARCycleStartDate": "2026-01-15",
-      "ARCycleEndDate": "2026-12-31"
+      "ARCycleEndDate": "2026-12-31",
+      "completed": false
     },
     {
       "ARCycle": "2025",
       "ARCycleStartDate": "2025-01-10",
-      "ARCycleEndDate": "2025-12-28"
+      "ARCycleEndDate": "2025-12-28",
+      "completed": false
     },
     {
       "ARCycle": "2024",
       "ARCycleStartDate": "2024-01-05",
-      "ARCycleEndDate": "2024-12-20"
+      "ARCycleEndDate": "2024-12-20",
+      "completed": true
     },
     {
       "ARCycle": "2023",
       "ARCycleStartDate": "2023-01-01",
-      "ARCycleEndDate": "2023-12-15"
+      "ARCycleEndDate": "2023-12-15",
+      "completed": true
+    },
+    {
+      "ARCycle": "2022",
+      "ARCycleStartDate": "2022-01-01",
+      "ARCycleEndDate": "2022-12-15",
+      "completed": true
     }
   ]
 }
