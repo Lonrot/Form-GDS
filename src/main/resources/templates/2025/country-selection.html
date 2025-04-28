@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8;"/>
+    <title>Country Selection</title>
+    <link rel="stylesheet" href="/css/govuk-frontend-5.7.1.min.css">
+    <script type="module" th:src="@{/js/govuk-frontend-5.7.1.min.js}"></script>
+    <style>
+        .country-columns {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .country-column {
+            flex: 1;
+            border: 1px solid #b1b4b6;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .country-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .country-item {
+            padding: 10px;
+            border-bottom: 1px solid #f3f2f1;
+            cursor: pointer;
+        }
+        .country-item:hover {
+            background-color: #f3f2f1;
+        }
+        .selected {
+            background-color: #e7f4e4;
+        }
+    </style>
+</head>
+<body class="govuk-template__body">
+
+<div th:replace="~{fragments/govHeader :: header}"></div>
+
+<div class="govuk-width-container">
+    <main class="govuk-main-wrapper" id="main-content" role="main">
+        <h1 class="govuk-heading-l">Country Selection</h1>
+
+        <form action="#" th:action="@{/countries/submit(ar='2025')}" th:object="${CountrySelection2025}" method="post">
+            <div th:if="${#fields.hasErrors('*')}" class="govuk-error-summary" role="alert">
+
+            <div th:if="${#fields.hasGlobalErrors()}" class="govuk-error-summary" role="alert">
+                <h2 class="govuk-error-summary__title">There is a problem</h2>
+                <div class="govuk-error-summary__body">
+                    <ul class="govuk-list govuk-error-summary__list">
+                        <li th:each="err : ${#fields.globalErrors()}" th:text="${err}"></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="country-columns">
+                <div class="country-column">
+                    <h2 class="govuk-heading-m">Available Countries</h2>
+                    <ul class="country-list" id="available-countries">
+                        <li th:each="country : ${allCountries}"
+                            th:unless="${#lists.contains(#object.selectedCountries, country)}"
+                            th:text="${country}"
+                            class="country-item"
+                            onclick="selectCountry(this)">
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="country-column">
+                    <h2 class="govuk-heading-m">Selected Countries</h2>
+                    <ul class="country-list" id="selected-countries">
+                        <li th:each="country, status : *{selectedCountries}"
+                            th:text="${country}"
+                            class="country-item selected"
+                            onclick="unselectCountry(this)">
+                        </li>
+                    </ul>
+
+                    <!-- Hidden inputs container -->
+                    <div id="selected-country-inputs">
+                        <input th:each="country, status : *{selectedCountries}"
+                               type="hidden"
+                               th:field="*{selectedCountries[__${status.index}__]}" />
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="govuk-button" data-module="govuk-button">Continue</button>
+        </form>
+    </main>
+</div>
+
+<div th:replace="~{fragments/govFooter :: footer}"></div>
+
+<script>
+    function selectCountry(element) {
+        const country = element.textContent.trim();
+        element.remove();
+
+        const selectedList = document.getElementById('selected-countries');
+        const newItem = document.createElement('li');
+        newItem.textContent = country;
+        newItem.className = 'country-item selected';
+        newItem.onclick = function() { unselectCountry(this); };
+        selectedList.appendChild(newItem);
+
+        updateHiddenInputs();
+    }
+
+    function unselectCountry(element) {
+        const country = element.textContent.trim();
+        element.remove();
+
+        const availableList = document.getElementById('available-countries');
+        const newItem = document.createElement('li');
+        newItem.textContent = country;
+        newItem.className = 'country-item';
+        newItem.onclick = function() { selectCountry(this); };
+
+        let inserted = false;
+        for (const child of availableList.children) {
+            if (child.textContent.trim() > country) {
+                availableList.insertBefore(newItem, child);
+                inserted = true;
+                break;
+            }
+        }
+        if (!inserted) {
+            availableList.appendChild(newItem);
+        }
+
+        updateHiddenInputs();
+    }
+
+    function updateHiddenInputs() {
+        const selectedCountries = document.getElementById('selected-countries');
+        const inputsContainer = document.getElementById('selected-country-inputs');
+
+        inputsContainer.innerHTML = '';
+
+        for (let i = 0; i < selectedCountries.children.length; i++) {
+            const country = selectedCountries.children[i].textContent.trim();
+
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'selectedCountries[' + i + ']';
+            input.value = country;
+            inputsContainer.appendChild(input);
+        }
+    }
+</script>
+</body>
+</html>

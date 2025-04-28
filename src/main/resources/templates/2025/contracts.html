@@ -2,11 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8;"/>
-    <title>Income and Spending</title>
+    <title>Contracts</title>
     <link rel="stylesheet" href="/css/govuk-frontend-5.7.1.min.css">
     <script type="module" th:src="@{/js/govuk-frontend-5.7.1.min.js}"></script>
-
-
 </head>
 <body class="govuk-template__body">
 
@@ -14,9 +12,9 @@
 
 <div class="govuk-width-container">
     <main class="govuk-main-wrapper" id="main-content" role="main">
-        <h1 class="govuk-heading-l">Income and Spending</h1>
+        <h1 class="govuk-heading-l">Contracts</h1>
 
-        <form action="#" th:action="@{/income-and-spending/submit(ar=${2025})}" th:object="${IncomeAndSpending2025}" method="post">
+        <form action="#" th:action="@{/contracts/submit(ar=${2025})}" th:object="${Contracts2025}" method="post">
             <div th:if="${#fields.hasGlobalErrors()}" class="govuk-error-summary" role="alert">
                 <h2 class="govuk-error-summary__title">There is a problem</h2>
                 <div class="govuk-error-summary__body">
@@ -26,17 +24,18 @@
                 </div>
             </div>
 
+            <div th:insert="~{fragments/components/monetaryInput :: textInput(field1, 'Contract Field 1')}"></div>
+            <div th:insert="~{fragments/components/monetaryInput :: textInput(field2, 'Contract Field 2')}"></div>
+            <div th:insert="~{fragments/components/monetaryInput :: textInput(field3, 'Contract Field 3')}"></div>
+            <div th:insert="~{fragments/components/monetaryInput :: textInput(field4, 'Contract Field 4')}"></div>
+            <div th:insert="~{fragments/components/monetaryInput :: textInput(field5, 'Contract Field 5')}"></div>
 
 
-            <div th:insert="~{fragments/components/monetaryInput :: monetaryValue(income,Income)}"></div>
-            <div th:insert="~{fragments/components/monetaryInput :: monetaryValue(spending,Spending)}"></div>
-
-            <!-- Submit Button -->
             <button type="submit" class="govuk-button" data-module="govuk-button">Continue</button>
         </form>
     </main>
 </div>
 
-<!-- Footer -->
 <div th:replace="~{fragments/govFooter :: footer}"></div>
 </body>
+</html>

@@ -5,10 +5,8 @@ import integration.service.ServiceIntegration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import web.form.model.AnnualReturn;
-import web.form.model.AnnualReturnArray;
+import web.form.model.initialpage.AnnualReturn;
+import web.form.model.initialpage.AnnualReturnArray;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -45,17 +43,6 @@ public class MainController {
 
         model.addAttribute("annualReturns", annualReturnList);
         return "selectAR";
-    }
-
-    @GetMapping("/income-and-spending")
-    @ResponseBody
-    public String incomeAndSpending(@RequestParam("ar") String ARCycle) {
-
-        return switch (ARCycle) {
-            case "2024" -> "2024/income-and-spending";
-            case "2025" -> "2025/income-and-spending";
-            default -> "error";
-        };
     }
 
 }

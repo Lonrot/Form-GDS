@@ -1,13 +1,13 @@
-<div class="govuk-form-group" th:fragment="monetaryValue(monetaryvariableName)">
-    <label class="govuk-label govuk-label--l" th:for="${monetaryvariableName}">Income</label>
-    <div th:errors="*{${monetaryvariableName}}" class="govuk-error-message"></div>
+<div class="govuk-form-group" th:fragment="monetaryValue(monetaryvariableName, tittle)">
+    <label class="govuk-label govuk-label--l" th:for="${monetaryvariableName}" th:text="${tittle}"></label>
+    <div th:errors="*{__${monetaryvariableName}__}" class="govuk-error-message"></div>
     <div class="govuk-input__wrapper">
         <div class="govuk-input__prefix" aria-hidden="true">£</div>
         <input class="govuk-input govuk-input--width-10"
                type="text"
                th:id="${monetaryvariableName}"
                th:name="${monetaryvariableName}"
-               th:field="*{${monetaryvariableName}}"
+               th:field="*{__${monetaryvariableName}__}"
                required>
     </div>
 </div>
@@ -19,15 +19,17 @@
     This fragment creates a text input with no prefix and sufix
 */-->
 
-<div class="govuk-form-group" th:fragment="textInput(textvariableName)">
-    <label class="govuk-label govuk-label--l" th:for="${textvariableName}">Income</label>
-    <div th:errors="*{${textvariableName}}" class="govuk-error-message"></div>
+<div class="govuk-form-group" th:fragment="textInput(textvariableName, label)">
+    <label class="govuk-label govuk-label--l" th:for="${textvariableName}" th:text="${label}">Field Label</label>
+    <div th:errors="*{__${textvariableName}__}" class="govuk-error-message"></div>
     <div class="govuk-input__wrapper">
         <input class="govuk-input govuk-input--width-10"
                type="text"
                th:id="${textvariableName}"
                th:name="${textvariableName}"
-               th:field="*{${textvariableName}}"
+               th:field="*{__${textvariableName}__}"
                required>
     </div>
 </div>
+
+

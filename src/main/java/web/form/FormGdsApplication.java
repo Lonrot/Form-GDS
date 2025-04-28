@@ -10,7 +10,7 @@ import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options
 
 @SpringBootApplication
 @Slf4j
-@ComponentScan(basePackages = {"integration", "web.form"})
+@ComponentScan(basePackages = {"integration", "web"})
 public class FormGdsApplication {
 
 	public static void main(String[] args) {

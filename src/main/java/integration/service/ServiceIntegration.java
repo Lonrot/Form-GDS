@@ -3,8 +3,8 @@ package integration.service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
-import web.form.model.AnnualReturn;
-import web.form.model.AnnualReturnArray;
+import web.form.model.initialpage.AnnualReturn;
+import web.form.model.initialpage.AnnualReturnArray;
 import wiremock.org.apache.commons.lang3.StringUtils;
 
 @Service

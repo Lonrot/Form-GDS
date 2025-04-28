@@ -1,4 +1,4 @@
-package web.form.model;
+package web.form.model.initialpage;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

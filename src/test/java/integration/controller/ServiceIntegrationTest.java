@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.wiremock.spring.EnableWireMock;
 import web.form.FormGdsApplication;
-import web.form.model.AnnualReturnArray;
+import web.form.model.initialpage.AnnualReturnArray;
 
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
 import static org.junit.jupiter.api.Assertions.*;
